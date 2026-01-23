@@ -1,0 +1,22 @@
+{
+  "name": "ui_automation_hotel_show_casing",
+  "version": "1.0.0",
+  "description": "Mission: Write an automation framework with the goal of showcasing my skills with Playwright as well as integrating easy extension and usability",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rotimi-Tests-Code/UI_Automation_Hotel_Show_Casing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rotimi-Tests-Code/UI_Automation_Hotel_Show_Casing/issues"
+  },
+  "homepage": "https://github.com/Rotimi-Tests-Code/UI_Automation_Hotel_Show_Casing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.10"
+  }
+}
