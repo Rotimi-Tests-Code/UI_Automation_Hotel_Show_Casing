@@ -19,10 +19,11 @@ test.describe('User books using the Book Now button in the Home Page', () => {
     test('Book Now Button works as expected', async ({page}) =>  {
         await bookNow.clickOnBookNowButton();
         await bookNow.fillBookingDate();
-        console.log("Clicked on CheckOut");
+        await bookNow.checkInDate();
+        await bookNow.checkOutDate();
+        await bookNow.clickCheckAvailablityButton();
+        await bookNow.clickBookNowButton()
         
-       
 
     })
 })
-
