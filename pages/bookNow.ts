@@ -12,21 +12,26 @@ export class BookNow {
     readonly reserveNow:Locator; 
     readonly firstName: Locator; 
     readonly lastName: Locator;
+    readonly email: Locator;
+    readonly phone: Locator;
+    readonly returnHome: Locator;
 
 
     constructor (home:Page) {
         this.home = home; 
         this.bookNow = home.locator('.btn.btn-primary.btn-lg');
        this.scrollUp = home.locator('h3.card-title');
-       
        const dateInputs = home.locator('.react-datepicker__input-container input');
        this.checkIn = dateInputs.nth(0);
        this.checkOut = dateInputs.nth(1);
        this.checkAvailabilty = home.locator('.btn.btn-primary.w-100.py-2');
-       this.selectRoom = home.locator('href="/reservation/1?checkin=2026-01-24&checkout=2026-01-28"');
+       this.selectRoom = home.locator('a[href="/reservation/1?checkin=2026-01-24&checkout=2026-01-28"]');
        this.reserveNow = home.locator('.btn.btn-primary.w-100.mb-3');
-       this.firstName = home.locator('.input.form-control.room-firstname');
-       this.lastName = home.locator('.input.form-control.room-lastname');
+       this.firstName = home.locator('input.form-control.room-firstname');
+       this.lastName = home.locator('input.form-control.room-lastname');
+       this.email = home.locator('input.form-control.room-email');
+       this.phone = home.locator('input.form-control.room-phone');
+       this.returnHome = home.locator('.btn.btn-prinary.w-100.mb-3.mt-3');
     }
 
     async clickOnBookNowButton() {
@@ -69,17 +74,38 @@ export class BookNow {
         await this.reserveNow.click();
     }
 
-    async EnterFirstName() {
+    async enterFirstName() {
         await expect(this.firstName).toBeVisible();
         await this.firstName.click();
         await this.firstName.fill("John");
     }
 
-    async EnterLastName() {
+    async enterLastName() {
         await expect(this.lastName).toBeVisible();
         await this.lastName.click();
         await this.lastName.fill("Rick");
     }
+
+    async enterEmail() {
+        await expect(this.email).toBeVisible();
+        await this.email.click();
+        await this.email.fill("john@gmail.com");
+    }
+
+    async enterPhoneNumber() {
+        await expect(this.phone).toBeVisible();
+        await this.phone.click();
+        await this.phone.fill("+316322394884");
+    }
+
+    async clickReturnHomeButton() {
+        await expect(this.phone).toBeVisible();
+        await this.phone.click();
+        await this.phone.fill("+316322394884");
+    }
+
+
+    
 
 
 }
