@@ -4,7 +4,7 @@ import { BookNow } from '../pages/bookNow';
 
 
 
-test.describe('User books using the Book Now button in the Home Page', () => {
+test.describe('Booking Page Opens To the Home Page', () => {
     let homepage: HomePage;
     let bookNow: BookNow;
     
@@ -16,7 +16,7 @@ test.describe('User books using the Book Now button in the Home Page', () => {
         await homepage.navigate();
     })
 
-    test('Book Now Button works as expected', async ({page}) =>  {
+    test('Booking a room using the book now button', async ({page}) =>  {
         await bookNow.clickOnBookNowButton();
         await bookNow.fillBookingDate();
         await bookNow.checkInDate();
