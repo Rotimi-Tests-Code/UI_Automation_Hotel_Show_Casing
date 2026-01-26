@@ -9,6 +9,9 @@ export class BookNow {
     readonly checkOut: Locator;
     readonly checkAvailabilty: Locator;
     readonly selectRoom: Locator; 
+    readonly reserveNow:Locator; 
+    readonly firstName: Locator; 
+    readonly lastName: Locator;
 
 
     constructor (home:Page) {
@@ -20,7 +23,10 @@ export class BookNow {
        this.checkIn = dateInputs.nth(0);
        this.checkOut = dateInputs.nth(1);
        this.checkAvailabilty = home.locator('.btn.btn-primary.w-100.py-2');
-       this.selectRoom = home.locator('a.btn.btn-primary');
+       this.selectRoom = home.locator('href="/reservation/1?checkin=2026-01-24&checkout=2026-01-28"');
+       this.reserveNow = home.locator('.btn.btn-primary.w-100.mb-3');
+       this.firstName = home.locator('.input.form-control.room-firstname');
+       this.lastName = home.locator('.input.form-control.room-lastname');
     }
 
     async clickOnBookNowButton() {
@@ -55,8 +61,24 @@ export class BookNow {
 
     async clickBookNowButton() {
         await expect(this.selectRoom).toBeVisible();
-        console.log('book now count:', await this.selectRoom.count());
         await this.selectRoom.first().click();
+    }
+
+    async clickReserveNowButton() {
+        await expect(this.reserveNow).toBeVisible();
+        await this.reserveNow.click();
+    }
+
+    async EnterFirstName() {
+        await expect(this.firstName).toBeVisible();
+        await this.firstName.click();
+        await this.firstName.fill("John");
+    }
+
+    async EnterLastName() {
+        await expect(this.lastName).toBeVisible();
+        await this.lastName.click();
+        await this.lastName.fill("Rick");
     }
 
 

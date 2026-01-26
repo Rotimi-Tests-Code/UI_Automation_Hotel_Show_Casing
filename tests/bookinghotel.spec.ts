@@ -22,8 +22,9 @@ test.describe('User books using the Book Now button in the Home Page', () => {
         await bookNow.checkInDate();
         await bookNow.checkOutDate();
         await bookNow.clickCheckAvailablityButton();
-        await bookNow.clickBookNowButton()
-        
-
+        await bookNow.clickBookNowButton();
+        await bookNow.clickReserveNowButton();
+        await bookNow.EnterFirstName();
+        await bookNow.EnterLastName();
     })
 })
