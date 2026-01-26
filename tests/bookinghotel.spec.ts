@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { BookNow } from '../pages/bookNow';
+import { bookingData } from '../data/bookingdata';
 
 
 
@@ -17,17 +18,17 @@ test.describe('Booking Page Opens To the Home Page', () => {
     })
 
     test('Booking a room using the book now button', async ({page}) =>  {
-        await bookNow.clickOnBookNowButton();
+        await bookNow.clickOnBookNowButton(bookingData);
         await bookNow.fillBookingDate();
-        await bookNow.checkInDate();
-        await bookNow.checkOutDate();
+        await bookNow.checkInDate(bookingData);
+        await bookNow.checkOutDate(bookingData);
         await bookNow.clickCheckAvailablityButton();
         await bookNow.clickBookNowButton();
         await bookNow.clickReserveNowButton();
-        await bookNow.enterFirstName();
-        await bookNow.enterLastName();
-        await bookNow.enterEmail();
-        await bookNow.enterPhoneNumber();
+        await bookNow.enterFirstName(bookingData);
+        await bookNow.enterLastName(bookingData);
+        await bookNow.enterEmail(bookingData);
+        await bookNow.enterPhoneNumber(bookingData);
         await bookNow.clickReserveNowButton();
         await bookNow.clickReturnHomeButton();
     })

@@ -1,5 +1,15 @@
 import { Page, Locator, expect } from "@playwright/test";
+import { bookingData } from "../data/bookingdata";
 
+
+type bookingData = {
+    checkInDate: string;
+    checkOutDate: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string; 
+}; 
 
 export class BookNow {
     readonly home: Page; 
@@ -32,31 +42,36 @@ export class BookNow {
        this.email = home.locator('input.form-control.room-email');
        this.phone = home.locator('input.form-control.room-phone');
        this.returnHome = home.locator('.btn.btn-prinary.w-100.mb-3.mt-3');
+
+
+        
     }
 
-    async clickOnBookNowButton() {
+    async clickOnBookNowButton(data: bookingData) {
     await expect(this.bookNow).toBeVisible();
     await this.bookNow.click();
 
     
+
 }
     async fillBookingDate() {
         await this.scrollUp.scrollIntoViewIfNeeded();
         await expect(this.scrollUp).toBeVisible();
         await this.scrollUp.click();
-       // await this.checkOut.fill('28/01/2026');
     }
 
-    async checkInDate() {
+    async checkInDate(data: bookingData) {
+        const {checkInDate} = data
         await expect(this.checkIn).toBeVisible();
         await this.checkIn.click();
-        await this.checkIn.fill('24/01/2026');
+        await this.checkIn.fill(checkInDate);
     }
 
-    async checkOutDate() {
+    async checkOutDate(data: bookingData) {
+        const {checkOutDate} = data
         await expect(this.checkOut).toBeVisible();
         await this.checkOut.click();
-        await this.checkOut.fill('28/01/2026');
+        await this.checkOut.fill(checkOutDate);
     }
 
     async clickCheckAvailablityButton() {
@@ -74,34 +89,37 @@ export class BookNow {
         await this.reserveNow.click();
     }
 
-    async enterFirstName() {
+    async enterFirstName(data: bookingData) {
+        const{firstName} = data;
         await expect(this.firstName).toBeVisible();
         await this.firstName.click();
-        await this.firstName.fill("John");
+        await this.firstName.fill(firstName);
     }
 
-    async enterLastName() {
+    async enterLastName(data = bookingData) {
+        const{lastName} = data;
         await expect(this.lastName).toBeVisible();
         await this.lastName.click();
-        await this.lastName.fill("Rick");
+        await this.lastName.fill(lastName);
     }
 
-    async enterEmail() {
+    async enterEmail(data = bookingData) {
+        const{email} = data
         await expect(this.email).toBeVisible();
         await this.email.click();
-        await this.email.fill("john@gmail.com");
+        await this.email.fill(email);
     }
 
-    async enterPhoneNumber() {
+    async enterPhoneNumber(data = bookingData) {
+        const{phone} = data
         await expect(this.phone).toBeVisible();
         await this.phone.click();
-        await this.phone.fill("+316322394884");
+        await this.phone.fill(phone);
     }
 
     async clickReturnHomeButton() {
-        await expect(this.phone).toBeVisible();
-        await this.phone.click();
-        await this.phone.fill("+316322394884");
+        await expect(this.returnHome).toBeVisible();
+        await this.returnHome.click();
     }
 
 
