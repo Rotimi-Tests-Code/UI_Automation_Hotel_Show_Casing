@@ -41,17 +41,15 @@ export class BookNow {
        this.lastName = home.locator('input.form-control.room-lastname');
        this.email = home.locator('input.form-control.room-email');
        this.phone = home.locator('input.form-control.room-phone');
-       this.returnHome = home.locator('.btn.btn-prinary.w-100.mb-3.mt-3');
+       this.returnHome = home.locator('.btn.btn-primary.w-100.mb-3.mt-3');
 
 
         
     }
 
-    async clickOnBookNowButton(data: bookingData) {
+    async clickOnBookNowButton() {
     await expect(this.bookNow).toBeVisible();
     await this.bookNow.click();
-
-    
 
 }
     async fillBookingDate() {
@@ -65,6 +63,7 @@ export class BookNow {
         await expect(this.checkIn).toBeVisible();
         await this.checkIn.click();
         await this.checkIn.fill(checkInDate);
+        await expect(this.checkIn).toHaveValue(checkInDate); 
     }
 
     async checkOutDate(data: bookingData) {
@@ -72,6 +71,7 @@ export class BookNow {
         await expect(this.checkOut).toBeVisible();
         await this.checkOut.click();
         await this.checkOut.fill(checkOutDate);
+        await expect(this.checkOut).toHaveValue(checkOutDate); 
     }
 
     async clickCheckAvailablityButton() {
@@ -94,6 +94,7 @@ export class BookNow {
         await expect(this.firstName).toBeVisible();
         await this.firstName.click();
         await this.firstName.fill(firstName);
+        await expect(this.firstName).toHaveValue(firstName); 
     }
 
     async enterLastName(data = bookingData) {
@@ -101,6 +102,7 @@ export class BookNow {
         await expect(this.lastName).toBeVisible();
         await this.lastName.click();
         await this.lastName.fill(lastName);
+        await expect(this.lastName).toHaveValue(lastName); 
     }
 
     async enterEmail(data = bookingData) {
@@ -108,6 +110,7 @@ export class BookNow {
         await expect(this.email).toBeVisible();
         await this.email.click();
         await this.email.fill(email);
+        await expect(this.email).toHaveValue(email); 
     }
 
     async enterPhoneNumber(data = bookingData) {
@@ -115,6 +118,7 @@ export class BookNow {
         await expect(this.phone).toBeVisible();
         await this.phone.click();
         await this.phone.fill(phone);
+        await expect(this.phone).toHaveValue(phone); 
     }
 
     async clickReturnHomeButton() {
