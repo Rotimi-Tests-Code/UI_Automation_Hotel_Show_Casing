@@ -41,7 +41,7 @@ export class BookNow {
        this.lastName = home.locator('input.form-control.room-lastname');
        this.email = home.locator('input.form-control.room-email');
        this.phone = home.locator('input.form-control.room-phone');
-       this.returnHome = home.locator('.btn.bn-primary.w-100.mb-3.mt-3');
+       this.returnHome = home.locator('.btn.btn-primary.w-100.mb-3.mt-3');
 
 
         
